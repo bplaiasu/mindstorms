@@ -23,8 +23,11 @@ def run(robot, attachment_motor1, attachment_motor2):
         attachment_motor2.run_angle(MOTOR_SPEED, current_angle_motor2)
 
     # Raise the arm of MotorE by 150 degrees
-    attachment_motor1.run_angle(MOTOR_SPEED, 150)
+    attachment_motor1.run_angle(MOTOR_SPEED, 140)
 
+    # ---------------------------
+    # -- GOING TO MISSION NO.2 --
+    # ---------------------------
     # From the base move fwd 64,5 cm
     move_straight(robot, 645)
 
@@ -32,13 +35,28 @@ def run(robot, attachment_motor1, attachment_motor2):
     arc(robot, -100, 35)
 
     # The move fwd 17 cm
-    move_straight(robot, 170)
+    move_straight(robot, 160)
 
     # Raise MotorF by 100 degrees
     attachment_motor2.run_angle(MOTOR_SPEED, 100)
 
+    # ---------------------------
+    # -- GOING TO MISSION NO.1 --
+    # ---------------------------
     # Move backwards 20 cm
-    move_straight(robot, -200)
+    move_straight(robot, -60)
 
-    # #
-    # arc(robot, 100, 35)
+    arc(robot, -100, -30)
+    move_straight(robot, -120)
+
+    attachment_motor1.run_angle(MOTOR_SPEED, -85)
+    # Raise the arm of MotorE by 150 degrees
+    attachment_motor1.run_angle(MOTOR_SPEED, 85)
+
+    # ----------------------
+    # -- BACK TO THE BASE --
+    # ----------------------
+    move_straight(robot, -600)
+
+    # Stop the robot after completing the steps
+    robot.stop()
