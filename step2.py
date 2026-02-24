@@ -1,4 +1,4 @@
-"""In this step the robot resolves MISSION 10 and 11"""
+"""In this step the robot resolves MISSION 11 and 12"""
 
 from functions import move_straight
 
