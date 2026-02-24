@@ -1,11 +1,36 @@
-"""In the first step the robot needs to go to points 1, 2 and 3"""
+"""In this step the robot resolves MISSION 10 and 11"""
 
-from functions import move_straight, arc, turn
+from functions import move_straight
 
 
-def run(robot):
-    move_straight(robot, 200)
-    arc(robot, 100, 35)
-    move_straight(robot, 200)
-    turn(robot, 180)
-    move_straight(robot, 300)
+def run(robot, attachment_motor1, attachment_motor2):
+    # The arm of motor F must be 12 cm above the ground at initialization
+
+    # Define robot constants
+    DISTANCE = 585
+    ARM_SPEED_MOTOR1 = 1000
+    ARM_SPEED_MOTOR2 = 3000
+    ARM_SPEED_MOTOR1_DEGREES = 2000
+    ARM_SPEED_MOTOR2_DEGREES2 = 5500
+    ARM_SPEED_MOTOR2_DEGREES1 = 5000
+
+    # # Raise the arm coresponding to MotorF
+    # attachment_motor2.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES1)
+
+    # Move robot fwd
+    move_straight(robot, DISTANCE)
+
+    # Lower the arm of MotorF
+    attachment_motor2.run_angle(ARM_SPEED_MOTOR2, ARM_SPEED_MOTOR2_DEGREES1)
+
+    # Start the wheels of MotorE
+    attachment_motor1.run_angle(ARM_SPEED_MOTOR1, -ARM_SPEED_MOTOR1_DEGREES)
+
+    # Raise the arm of MotorF
+    attachment_motor2.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES2)
+
+    # Back to the BASE
+    move_straight(robot, -DISTANCE)
+
+    # # Lower the arm of MotorF
+    # attachment_motor2.run_angle(ARM_SPEED_MOTOR2, ARM_SPEED_MOTOR2_DEGREES1)

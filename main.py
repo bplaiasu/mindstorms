@@ -34,15 +34,18 @@ robot = DriveBase(
 robot.settings(straight_speed=350, straight_acceleration=350)
 robot.use_gyro(True)
 
-# Run step1 file
-step1.run(robot, attachment_motor1, attachment_motor2)
+# # Run step1 file
+# step1.run(robot, attachment_motor1, attachment_motor2)
+
+# Run step2 file
+step2.run(robot, attachment_motor1, attachment_motor2)
 
 # while True:
 #     buttons = hub.buttons.pressed()
 
 #     if Button.RIGHT in buttons:
 #         wait(300)
-#         step2.run(robot)
+#         step2.run(robot, attachment_motor1, attachment_motor2)
 #         break
 
 # Stop the robot after completing the steps

@@ -1,6 +1,3 @@
-from pybricks.parameters import Stop
-
-
 def move_straight(robot, distance):
     """
     Moves the robot in a straight line for a specified distance.
