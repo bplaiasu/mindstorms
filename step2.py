@@ -31,6 +31,3 @@ def run(robot, attachment_motor1, attachment_motor2):
 
     # Back to the BASE
     move_straight(robot, -DISTANCE)
-
-    # # Lower the arm of MotorF
-    # attachment_motor2.run_angle(ARM_SPEED_MOTOR2, ARM_SPEED_MOTOR2_DEGREES1)

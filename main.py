@@ -7,6 +7,8 @@ from pybricks.tools import wait
 # import steps
 import step1
 import step2
+import step3
+import step4
 
 # Initialize hub
 hub = InventorHub()
@@ -37,15 +39,26 @@ robot.use_gyro(True)
 # # Run step1 file
 # step1.run(robot, attachment_motor1, attachment_motor2)
 
-# Run step2 file
-step2.run(robot, attachment_motor1, attachment_motor2)
+# # Run step2 file
+# step2.run(robot, attachment_motor1, attachment_motor2)
+
+# # Run step3 file
+# step3.run(robot, attachment_motor1, attachment_motor2)
+
+# Run step4 file
+step4.run(robot, left_motor, right_motor, attachment_motor1, attachment_motor2)
 
 # while True:
 #     buttons = hub.buttons.pressed()
 
 #     if Button.RIGHT in buttons:
-#         wait(300)
+#         wait(200)
 #         step2.run(robot, attachment_motor1, attachment_motor2)
+#         break
+
+#     if Button.RIGHT in buttons:
+#         wait(200)
+#         step3.run(robot, attachment_motor1, attachment_motor2)
 #         break
 
 # Stop the robot after completing the steps

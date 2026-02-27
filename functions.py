@@ -1,3 +1,6 @@
+from pybricks.parameters import Stop
+
+
 def move_straight(robot, distance):
     """
     Moves the robot in a straight line for a specified distance.
@@ -7,7 +10,7 @@ def move_straight(robot, distance):
                         (positive for forward, negative for backward).
     """
     # Use the DriveBase straight method to move the robot
-    robot.straight(distance)
+    robot.straight(distance, Stop.HOLD, wait=True)
 
 
 def turn(robot, angle):
