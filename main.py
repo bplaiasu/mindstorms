@@ -37,7 +37,7 @@ robot.settings(straight_speed=350, straight_acceleration=350)
 robot.use_gyro(True)
 
 # Run step1 file
-step4.run(robot, left_motor, right_motor, attachment_motor1, attachment_motor2)
+step2.run(robot, left_motor, right_motor, attachment_motor1, attachment_motor2)
 
 # Display the current step number
 hub.display.number(1)
