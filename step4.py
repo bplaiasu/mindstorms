@@ -14,6 +14,7 @@ def run(
     attachment_motor1=None,
     attachment_motor2=None,
 ):
+    robot.settings(450, 450)
     attachment_motor1.run_target(250, 0)
     attachment_motor2.run_target(250, 0)
 
@@ -26,65 +27,60 @@ def run(
         attachment_motor2.run_target(350, 0)
 
     # Raise the arms
-    attachment_motor1.run_angle(350, -100)
-    attachment_motor2.run_angle(350, -170)
+    attachment_motor1.run_angle(350, -175)
+    attachment_motor2.run_angle(350, -150)
 
     # ----------------------
-    # -- MISSION no.7 & 5 --
+    # -- MISSION no.6, 5 and 7 --
     # ----------------------
-    move_straight(robot, 740)
+    move_straight(robot, 735)
+    robot.settings(350, 350)
     move_straight(robot, -55)
-    right_motor.run_angle(150, 170)
-    move_straight(robot, -45)
-    right_motor.run_angle(150, 189)
+    right_motor.run_angle(150, 143)
+    move_straight(robot, -60)
+    right_motor.run_angle(150, 174)
     move_straight(robot, -285)
-    attachment_motor2.run_angle(350, 170)
+    attachment_motor2.run_angle(350, 150)
     move_straight(robot, -160)
-    attachment_motor2.run_angle(250, -170)
+    attachment_motor2.run_angle(250, -130)
 
     # ------------------
     # -- MISSION no.9 --
     # ------------------
+    # robot.settings(straight_speed=350, straight_acceleration=150)
     move_straight(robot, 420)
-    left_motor.run_angle(200, 170)
+    left_motor.run_angle(170, 155)
     move_straight(robot, -75)
-    right_motor.run_angle(200, -250)
-    move_straight(robot, -290)
-    right_motor.run_angle(200, 220)
-    move_straight(robot, -160)
+    # right_motor.run_angle(200, -267)  # ???
+    robot.settings(turn_rate=150, turn_acceleration=150)
+    arc(robot, 30, 50)
+    move_straight(robot, -105)
+    arc(robot, 32, 40)
+    move_straight(robot, -520)
 
-    # Turn right
-    arc(robot, -50, -120)
+    # # Turn left
+    arc(robot, -50, 65)
 
     # -------------------
     # -- MISSION no.10 --
     # -------------------
-    move_straight(robot, -325)
+    # attachment_motor1.run_angle(350, -100)
+    move_straight(robot, 108)
+    attachment_motor1.run_angle(350, 150)
 
     # Turn left
     robot.settings(
         turn_rate=200,
         turn_acceleration=200,
     )
-    arc(robot, -30, 90)
-    move_straight(robot, 80)
-    attachment_motor1.run_angle(350, 106)
-    robot.settings(
-        straight_speed=50,
-        straight_acceleration=50,
-        turn_rate=50,
-        turn_acceleration=50,
-    )
-    move_straight(robot, -100)
+    move_straight(robot, -150)
+    turn(robot, -52)
 
     # ------------------
     # -- BASE TO Base --
     # ------------------
     robot.settings(
-        straight_speed=200,
-        straight_acceleration=200,
-        turn_rate=50,
-        turn_acceleration=50,
+        straight_speed=1000,
+        straight_acceleration=1000,
     )
-    turn(robot, -90)
-    move_straight(robot, -600)
+    move_straight(robot, -500)
