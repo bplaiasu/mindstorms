@@ -1,10 +1,9 @@
 """
 In this step the robot resolves MISSION 5, 6, 7, 9 and 10
-Execution time: 38 sec
+Execution time: 33 sec
 """
 
 from functions import move_straight, turn, arc
-from pybricks.tools import wait
 
 
 def run(
