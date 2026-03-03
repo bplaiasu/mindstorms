@@ -71,3 +71,7 @@ def run(robot, left_motor, right_motor, attachment_motor1, attachment_motor2):
     # ----------------------
     robot.settings(1150, 1150)
     move_straight(robot, -DISTANCE_TO_BASE)
+
+    # Reset the MotorE at position 0 >>> this can be add at the final step2
+    attachment_motor1.run_target(MOTOR_SPEED, 0)
+    attachment_motor2.run_target(MOTOR_SPEED, 0)
