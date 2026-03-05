@@ -8,7 +8,13 @@ from functions import move_straight, arc
 from pybricks.tools import wait
 
 
-def run(robot, left_motor, right_motor, attachment_motor1, attachment_motor2):
+def run(
+    robot,
+    left_motor=None,
+    right_motor=None,
+    attachment_motor1=None,
+    attachment_motor2=None,
+):
     MOTOR_SPEED = 250
     ATCH_MOTOR1_ARM_DEGREES = 140  # degrees
     DISTANCE_TO_MISSION_2 = 645  # mm

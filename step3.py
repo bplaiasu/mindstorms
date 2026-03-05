@@ -4,7 +4,13 @@ from functions import move_straight, turn, arc
 from pybricks.tools import wait
 
 
-def run(robot, left_motor, right_motor, attachment_motor1, attachment_motor2):
+def run(
+    robot,
+    left_motor=None,
+    right_motor=None,
+    attachment_motor1=None,
+    attachment_motor2=None,
+):
     # Define robot constants
     DISTANCE = 939
     ARM_SPEED_MOTOR1 = 350
