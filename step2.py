@@ -4,14 +4,15 @@ Execution time: 17 sec
 """
 
 from functions import move_straight
+from pybricks.parameters import Stop
 
 
 def run(
     robot,
     left_motor=None,
     right_motor=None,
-    attachment_motor1=None,
-    attachment_motor2=None,
+    motor_e=None,
+    motor_f=None,
 ):
     # Telescope distance = 1,25 cm
 
@@ -26,19 +27,23 @@ def run(
     robot.settings(350, 350, 1300, 1300)
 
     # # Raise the arm coresponding to MotorF
-    # attachment_motor2.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES1)
+    # motor_f.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES1)
 
     # Move robot fwd
     move_straight(robot, DISTANCE)
 
     # Lower the arm of MotorF
-    attachment_motor2.run_angle(ARM_SPEED_MOTOR2, ARM_SPEED_MOTOR2_DEGREES1)
+    motor_f.run_angle(
+        ARM_SPEED_MOTOR2,
+        ARM_SPEED_MOTOR2_DEGREES1,
+        # then=Stop.HOLD,   # improvements ????!!
+    )
 
     # Start the wheels of MotorE
-    attachment_motor1.run_angle(ARM_SPEED_MOTOR1, -ARM_SPEED_MOTOR1_DEGREES)
+    motor_e.run_angle(ARM_SPEED_MOTOR1, -ARM_SPEED_MOTOR1_DEGREES)
 
     # Raise the arm of MotorF
-    attachment_motor2.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES2)
+    motor_f.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES2)
 
     # Back to the BASE
     move_straight(robot, -DISTANCE)

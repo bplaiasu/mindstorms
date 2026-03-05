@@ -10,24 +10,24 @@ def run(
     robot,
     left_motor=None,
     right_motor=None,
-    attachment_motor1=None,
-    attachment_motor2=None,
+    motor_e=None,
+    motor_f=None,
 ):
     robot.settings(450, 450)
-    attachment_motor1.run_target(250, 0)
-    attachment_motor2.run_target(250, 0)
+    motor_e.run_target(250, 0)
+    motor_f.run_target(250, 0)
 
     # Reset motors to 0 angle if arms aren't in the original position
-    if attachment_motor1.angle() < 10 or attachment_motor1.angle() > -10:
-        attachment_motor1.run_angle(350, -attachment_motor1.angle())
-        attachment_motor1.run_target(350, 0)
-    if attachment_motor2.angle() < 10 or attachment_motor2.angle() > -10:
-        attachment_motor2.run_angle(350, -attachment_motor2.angle())
-        attachment_motor2.run_target(350, 0)
+    if motor_e.angle() < 10 or motor_e.angle() > -10:
+        motor_e.run_angle(350, -motor_e.angle())
+        motor_e.run_target(350, 0)
+    if motor_f.angle() < 10 or motor_f.angle() > -10:
+        motor_f.run_angle(350, -motor_f.angle())
+        motor_f.run_target(350, 0)
 
     # Raise the arms
-    attachment_motor1.run_angle(350, -175)
-    attachment_motor2.run_angle(350, -150)
+    motor_e.run_angle(350, -175)
+    motor_f.run_angle(350, -150)
 
     # ----------------------
     # -- MISSION no.6, 5 and 7 --
@@ -39,9 +39,9 @@ def run(
     move_straight(robot, -60)
     right_motor.run_angle(150, 174)
     move_straight(robot, -285)
-    attachment_motor2.run_angle(350, 150)
+    motor_f.run_angle(350, 150)
     move_straight(robot, -160)
-    attachment_motor2.run_angle(250, -130)
+    motor_f.run_angle(250, -130)
 
     # ------------------
     # -- MISSION no.9 --
@@ -63,9 +63,9 @@ def run(
     # -------------------
     # -- MISSION no.10 --
     # -------------------
-    # attachment_motor1.run_angle(350, -100)
+    # motor_e.run_angle(350, -100)
     move_straight(robot, 108)
-    attachment_motor1.run_angle(350, 150)
+    motor_e.run_angle(350, 150)
 
     # Turn left
     robot.settings(
@@ -83,3 +83,11 @@ def run(
         straight_acceleration=1000,
     )
     move_straight(robot, -500)
+
+
+"""
+    robot.use_gyro(False)
+    right_motor.run_angle(150, 143)
+    robot.reset() 
+    robot.use_gyro(True)
+"""
