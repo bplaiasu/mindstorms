@@ -1,6 +1,5 @@
 """In this step the robot resolves MISSION 3, 4, 8, 9 and 13"""
 
-from functions import move_straight, turn, arc
 from pybricks.tools import wait
 
 
@@ -8,56 +7,49 @@ def run(
     robot,
     left_motor=None,
     right_motor=None,
-    attachment_motor1=None,
-    attachment_motor2=None,
+    motor_e=None,
+    motor_f=None,
 ):
+    robot.reset()
+
     # Define robot constants
     DISTANCE = 939
     ARM_SPEED_MOTOR1 = 350
     ARM_SPEED_MOTOR1_DEGREES = 170
 
-    # Reset the MotorE at position 0 >>> this can be add at the final step2
-    attachment_motor1.run_target(ARM_SPEED_MOTOR1, 0)
-    attachment_motor2.run_target(ARM_SPEED_MOTOR1, 0)
-
-    if attachment_motor1.angle() < 10 or attachment_motor1.angle() > -10:
-        attachment_motor1.run_angle(ARM_SPEED_MOTOR1, -attachment_motor1.angle())
-        attachment_motor1.run_target(ARM_SPEED_MOTOR1, 0)
-
-    # ---------------------------
-    # -- GOING TO MISSION NO.4 --
-    # ---------------------------
+    # ------------------
+    # -- MISSION NO.4 --
+    # ------------------
     # Raise the arm of MotorE
-    attachment_motor1.run_angle(ARM_SPEED_MOTOR1, ARM_SPEED_MOTOR1_DEGREES)
-
+    motor_f.run_target(ARM_SPEED_MOTOR1, 150)
+    motor_e.run_target(ARM_SPEED_MOTOR1, ARM_SPEED_MOTOR1_DEGREES)
     robot.settings(straight_speed=500, straight_acceleration=200)
-
-    # Move robot fwd
-    move_straight(robot, DISTANCE)
+    robot.straight(DISTANCE)
 
     # Turn right
     robot.settings(turn_rate=100, turn_acceleration=100)
-    turn(robot, 89)
+    robot.turn(89)
 
     left_motor.stop()
     right_motor.stop()
-    move_straight(robot, -30)
+    robot.straight(-30)
     left_motor.stop()
     right_motor.stop()
     # Lower the arm of MotorE
-    attachment_motor1.run_angle(ARM_SPEED_MOTOR1, -136)
+    motor_e.run_target(ARM_SPEED_MOTOR1, 33)
 
     # Move robot fwd to collect the artefact
-    move_straight(robot, 115)
+    robot.settings(turn_rate=100, turn_acceleration=50)
+    robot.straight(115)
 
     # Move rev with the collected artefact
     robot.settings(turn_rate=35, turn_acceleration=35)
-    attachment_motor1.run_angle(ARM_SPEED_MOTOR1, 20)
+    motor_e.run_angle(ARM_SPEED_MOTOR1, 25)
     robot.settings(straight_speed=250, straight_acceleration=100)
-    move_straight(robot, -120)
+    robot.straight(-120)
 
-    # Raise the arm of MotorE
-    attachment_motor1.run_angle(ARM_SPEED_MOTOR1, 90)
+    # Raise arm slightly to secure the artefact while turning
+    motor_e.run_angle(ARM_SPEED_MOTOR1, 90)
 
     # ---------------------------
     # -- GOING TO MISSION NO.3 --
@@ -67,32 +59,42 @@ def run(
         straight_speed=350,
         straight_acceleration=350,
         turn_rate=200,
-        turn_acceleration=200,
+        turn_acceleration=150,
     )
-    turn(robot, 40)
-    move_straight(robot, 230)
-    turn(robot, -40)
-    move_straight(robot, 263)
+    robot.turn(40)
+    robot.straight(235)
+    robot.turn(-40)
+    robot.straight(295)
+
+    wait(250)
 
     # ----------------------------
     # -- GOING TO MISSION NO.10 --
     # ----------------------------
-    move_straight(robot, 450)
+    robot.straight(430)
     robot.settings(turn_rate=200, turn_acceleration=200)
-    turn(robot, -45)
-    arc(robot, 100, 83)
-    move_straight(robot, 130)
+    robot.turn(-45)
+    robot.arc(85, 80)
+    robot.straight(155)
 
     # ---------------------------
     # -- GOING TO MISSION NO.8 --
     # ---------------------------
-    move_straight(robot, -100)
-    turn(robot, -25)
-    attachment_motor2.run_angle(ARM_SPEED_MOTOR1, 400)
-    move_straight(robot, 350)
+    robot.straight(-100)
+    robot.turn(-15)
+    robot.straight(365)
+    motor_f.run_angle(ARM_SPEED_MOTOR1, 420)
     robot.settings(straight_speed=1150)
-    attachment_motor2.run_angle(ARM_SPEED_MOTOR1, 3000)
+    motor_f.run_angle(ARM_SPEED_MOTOR1, 2000)
 
     # ----------------------------
     # -- GOING TO MISSION NO.13 --
     # ----------------------------
+    robot.settings(straight_speed=1000, straight_acceleration=1000)
+    robot.straight(-130)
+    robot.turn(37)
+    robot.straight(500)
+
+    # reset motors >>> preparation for next step
+    motor_e.run_target(ARM_SPEED_MOTOR1, 0)
+    motor_f.run_target(ARM_SPEED_MOTOR1, 0)
