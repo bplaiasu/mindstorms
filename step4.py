@@ -11,11 +11,12 @@ def run(
     motor_e=None,
     motor_f=None,
 ):
+    # print("step 4")
     robot.reset()
     robot.settings(450, 450)
 
     # Raise the arms
-    motor_e.run_target(350, 80)
+    motor_e.run_target(350, 100)
     motor_f.run_target(350, -150)
 
     # ----------------------
@@ -38,11 +39,11 @@ def run(
     # robot.settings(straight_speed=350, straight_acceleration=150)
     robot.straight(420)
     left_motor.run_angle(170, 155)
-    robot.straight(-75)
+    robot.straight(-70)
     # right_motor.run_angle(200, -267)  # ???
     robot.settings(turn_rate=150, turn_acceleration=150)
     robot.arc(30, 50)
-    robot.straight(-140)
+    robot.straight(-150)
     robot.arc(32, 40)
     robot.straight(-480)
 
@@ -53,7 +54,7 @@ def run(
     # -- MISSION no.10 --
     # -------------------
     # motor_e.run_angle(350, -100)
-    robot.straight(108)
+    robot.straight(118)
     motor_e.run_angle(350, -150)
 
     # Turn left

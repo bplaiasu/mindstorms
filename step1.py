@@ -14,15 +14,16 @@ def run(
     motor_e=None,
     motor_f=None,
 ):
+    # print("step 1")
     MOTOR_SPEED = 250
     DISTANCE_TO_MISSION_2 = 645  # mm
     DISTANCE_MISSION2_OBJECT = 165  # mm
-    ATCH_MOTOR2_ARM_DEGREES = 100  # degrees
-    DISTANCE_TO_MISSION1 = 65  # mm
+    ATCH_MOTOR2_ARM_DEGREES = 105  # degrees
+    DISTANCE_TO_MISSION1 = 50  # mm
     DISTANCE_TO_BASE = 500
     ATCH_MOTOR1_ARM_DEGREES_MISSION1 = 400  # degrees
-    LIFT_DISTANCE_REV = 220
-    LIFT_DISTANCE_FWD = 100
+    LIFT_DISTANCE_REV = 240
+    LIFT_DISTANCE_FWD = 125
 
     # # Reset arms to absolute zero
     # motor_e.run_target(MOTOR_SPEED, 0)
@@ -43,12 +44,13 @@ def run(
 
     # Move backwards
     robot.straight(-DISTANCE_TO_MISSION1)
+    # robot.settings(turn_acceleration=50)
     robot.arc(50, -37)
     robot.straight(-LIFT_DISTANCE_REV)
     robot.straight(LIFT_DISTANCE_FWD)
 
     # ATTENTION: on training possible to adjust the wait
-    wait(250)
+    wait(500)
 
     # The lift movement
     motor_e.run_angle(MOTOR_SPEED, -ATCH_MOTOR1_ARM_DEGREES_MISSION1)

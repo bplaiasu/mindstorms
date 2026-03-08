@@ -10,6 +10,7 @@ def run(
     motor_e=None,
     motor_f=None,
 ):
+    # print("step 3")
     robot.reset()
 
     # Define robot constants
@@ -28,7 +29,7 @@ def run(
 
     # Turn right
     robot.settings(turn_rate=100, turn_acceleration=100)
-    robot.turn(89)
+    robot.turn(90)
 
     left_motor.stop()
     right_motor.stop()
@@ -36,7 +37,7 @@ def run(
     left_motor.stop()
     right_motor.stop()
     # Lower the arm of MotorE
-    motor_e.run_target(ARM_SPEED_MOTOR1, 33)
+    motor_e.run_target(ARM_SPEED_MOTOR1, 32)
 
     # Move robot fwd to collect the artefact
     robot.settings(turn_rate=100, turn_acceleration=50)
@@ -44,7 +45,7 @@ def run(
 
     # Move rev with the collected artefact
     robot.settings(turn_rate=35, turn_acceleration=35)
-    motor_e.run_angle(ARM_SPEED_MOTOR1, 25)
+    motor_e.run_angle(ARM_SPEED_MOTOR1, 22)
     robot.settings(straight_speed=250, straight_acceleration=100)
     robot.straight(-120)
 
@@ -74,8 +75,8 @@ def run(
     robot.straight(430)
     robot.settings(turn_rate=200, turn_acceleration=200)
     robot.turn(-45)
-    robot.arc(85, 80)
-    robot.straight(155)
+    robot.arc(83, 80)
+    robot.straight(158)
 
     # ---------------------------
     # -- GOING TO MISSION NO.8 --
@@ -90,11 +91,12 @@ def run(
     # ----------------------------
     # -- GOING TO MISSION NO.13 --
     # ----------------------------
-    robot.settings(straight_speed=1000, straight_acceleration=1000)
+    robot.settings(straight_speed=1150, straight_acceleration=1150)
     robot.straight(-130)
     robot.turn(37)
     robot.straight(500)
 
+    # wait(5000)
     # reset motors >>> preparation for next step
     motor_e.run_target(ARM_SPEED_MOTOR1, 0)
     motor_f.run_target(ARM_SPEED_MOTOR1, 0)

@@ -16,6 +16,7 @@ def run(
     motor_e=None,
     motor_f=None,
 ):
+    # print("step 5")
     robot.reset()
 
     # start from the base
@@ -25,12 +26,12 @@ def run(
         turn_acceleration=50,
     )
     motor_f.run_target(350, 68)
-    robot.straight(485)
+    robot.straight(500)
 
     # go and take cart
-    robot.arc(-30, 40)
-    robot.straight(320)
+    robot.turn(38)
     motor_f.run_target(200, 150)
+    robot.straight(320)
 
     # position the flag
     robot.straight(207)
@@ -39,9 +40,9 @@ def run(
         turn_rate=80,
         turn_acceleration=100,
     )
-    robot.arc(-30, 50)
+    robot.arc(-30, 52)
     robot.settings(
-        straight_speed=200,
+        straight_speed=400,
         straight_acceleration=200,
         turn_rate=200,
         turn_acceleration=200,
@@ -76,13 +77,13 @@ def run(
     # place the artefacts in the arena
     robot.straight(-50)
     robot.arc(-30, -39)
-    robot.straight(380)
-    motor_e.run_angle(1000, -150)
+    robot.straight(430)
+    motor_e.run_angle(100, -150)
 
     # place the final flag and finalize the campaign
     robot.settings(straight_acceleration=(1000, 200))
-    # robot.arc(10, 10)
-    robot.straight(170)
+    robot.straight(140)
+    robot.turn(20)
 
     # # reset motors
     # motor_e.run_target(250, 0)

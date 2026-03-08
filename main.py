@@ -14,7 +14,8 @@ import step5
 hub = InventorHub()
 
 # Create a list of all steps modules
-program_list = [step1, step2, step3, step4]
+program_list = [step1, step2, step3, step4, step5]
+# program_list = [step4, step5]
 current_index = 0
 
 # Adjust robot dimensions
@@ -37,7 +38,14 @@ robot = DriveBase(
 # Set movement speed and enable gyro for heading correction
 robot.settings(straight_speed=350, straight_acceleration=350)
 robot.use_gyro(True)
+wait(1000)
 
+
+# Reset the motors
+motor_e.run_target(350, 0)
+motor_f.run_target(350, 0)
+
+# step3.run(robot, left_motor, right_motor, motor_e, motor_f)
 
 while True:
     # Wait for a button press
@@ -70,6 +78,38 @@ while True:
             # Wait until the button is released so it doesn't double-trigger
             while Button.RIGHT in hub.buttons.pressed():
                 wait(10)
+
+    # # --- GO BACK (Left Button) ---
+    # elif Button.LEFT and Button.RIGHT in pressed_buttons:
+    #     print("idx:", current_index)
+    #     if current_index > len(program_list):
+    #         # print("a intrat pe aici")
+    #         break
+
+    #     if current_index <= 0:
+    #         current_index = 0
+    #         hub.display.number(current_index)
+
+    #     # Move index back by 1, but don't go below 0
+    #     if current_index > 0:
+    #         # print("test")
+    #         # print("test idx:", current_index)
+
+    #         # Execute the missions
+    #         current_index -= 1
+    #         program_list[current_index].run(
+    #             robot, left_motor, right_motor, motor_e, motor_f
+    #         )
+    #         # Lower beep for "back"
+    #         hub.speaker.beep(frequency=600, duration=100)
+
+    #         # Display the "new" next mission number
+    #         hub.display.number(current_index + 1)
+
+    #     # Debounce: wait for release
+    #     while Button.LEFT in hub.buttons.pressed():
+    #         wait(10)
+
     wait(50)
 
 # Finalize the execution

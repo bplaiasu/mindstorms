@@ -11,17 +11,18 @@ def run(
     motor_e=None,
     motor_f=None,
 ):
+    # print("step 2")
     robot.reset()
 
     # Define robot constants
-    DISTANCE = 592
+    DISTANCE = 603
     ARM_SPEED_MOTOR1 = 1000
     ARM_SPEED_MOTOR2 = 3000
     ARM_SPEED_MOTOR1_DEGREES = 2200
-    ARM_SPEED_MOTOR2_DEGREES2 = 3900
+    ARM_SPEED_MOTOR2_DEGREES2 = 4100
     ARM_SPEED_MOTOR2_DEGREES1 = 4000
 
-    robot.settings(350, 350, 1300, 1300)
+    robot.settings(350, 250, 1300, 1300)
 
     # # Raise the arm coresponding to MotorF
     # motor_f.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES1)
