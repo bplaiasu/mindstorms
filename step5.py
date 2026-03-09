@@ -29,7 +29,7 @@ def run(
     robot.straight(500)
 
     # go and take cart
-    robot.turn(38)
+    robot.turn(-38)
     motor_f.run_target(200, 150)
     robot.straight(320)
 

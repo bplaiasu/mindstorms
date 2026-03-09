@@ -22,10 +22,10 @@ def run(
     ARM_SPEED_MOTOR2_DEGREES2 = 4100
     ARM_SPEED_MOTOR2_DEGREES1 = 4000
 
-    robot.settings(350, 250, 1300, 1300)
+    robot.settings(350, 350, 1300, 1300)
 
-    # # Raise the arm coresponding to MotorF
-    # motor_f.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES1)
+    # Raise the arm coresponding to MotorF
+    motor_f.run_angle(ARM_SPEED_MOTOR2, -ARM_SPEED_MOTOR2_DEGREES1)
 
     # Move robot fwd
     robot.straight(DISTANCE)
@@ -34,7 +34,6 @@ def run(
     motor_f.run_angle(
         ARM_SPEED_MOTOR2,
         ARM_SPEED_MOTOR2_DEGREES1,
-        # then=Stop.HOLD,   # improvements ????!!
     )
 
     # Start the wheels of MotorE

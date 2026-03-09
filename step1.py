@@ -22,8 +22,8 @@ def run(
     DISTANCE_TO_MISSION1 = 50  # mm
     DISTANCE_TO_BASE = 500
     ATCH_MOTOR1_ARM_DEGREES_MISSION1 = 400  # degrees
-    LIFT_DISTANCE_REV = 240
-    LIFT_DISTANCE_FWD = 125
+    LIFT_DISTANCE_REV = 250
+    LIFT_DISTANCE_FWD = 140
 
     # # Reset arms to absolute zero
     # motor_e.run_target(MOTOR_SPEED, 0)
@@ -40,7 +40,8 @@ def run(
 
     # Transition to Mission No.1
     robot.settings(turn_rate=300, turn_acceleration=300)
-    robot.arc(-50, -70)
+    robot.straight(-30)
+    robot.arc(-40, -80)
 
     # Move backwards
     robot.straight(-DISTANCE_TO_MISSION1)
@@ -49,6 +50,7 @@ def run(
     robot.straight(-LIFT_DISTANCE_REV)
     robot.straight(LIFT_DISTANCE_FWD)
 
+    robot.straight(-20)
     # ATTENTION: on training possible to adjust the wait
     wait(500)
 

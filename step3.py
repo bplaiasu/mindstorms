@@ -50,7 +50,7 @@ def run(
     robot.straight(-120)
 
     # Raise arm slightly to secure the artefact while turning
-    motor_e.run_angle(ARM_SPEED_MOTOR1, 90)
+    motor_e.run_angle(ARM_SPEED_MOTOR1, 89.5)
 
     # ---------------------------
     # -- GOING TO MISSION NO.3 --
@@ -76,7 +76,7 @@ def run(
     robot.settings(turn_rate=200, turn_acceleration=200)
     robot.turn(-45)
     robot.arc(83, 80)
-    robot.straight(158)
+    robot.straight(160)
 
     # ---------------------------
     # -- GOING TO MISSION NO.8 --
